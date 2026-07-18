@@ -1,0 +1,40 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Z2M HA Descriptions",
+        "description": "Synchronisiert Zigbee2MQTT-Nutzerbeschreibungen auf Home-Assistant-Geräte.",
+        "data": {
+          "base_topic": "MQTT-Basis-Topic",
+          "sync_empty": "Leere Beschreibungen synchronisieren"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Integration ist bereits eingerichtet.",
+      "mqtt_not_loaded": "Die MQTT-Integration muss vor Z2M HA Descriptions eingerichtet sein."
+    },
+    "error": {}
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Z2M HA Descriptions Optionen",
+        "data": {
+          "base_topic": "MQTT-Basis-Topic",
+          "sync_empty": "Leere Beschreibungen synchronisieren"
+        }
+      }
+    }
+  },
+  "services": {
+    "sync_now": {
+      "name": "Jetzt synchronisieren",
+      "description": "Fordert eine aktuelle bridge/devices-Nachricht an und synchronisiert Beschreibungen."
+    },
+    "clear": {
+      "name": "Beschreibungen löschen",
+      "description": "Entfernt alle von dieser Integration erzeugten Beschreibungs-Sensoren."
+    }
+  }
+}

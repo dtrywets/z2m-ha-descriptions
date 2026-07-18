@@ -1,0 +1,39 @@
+[
+  {
+    "ieee_address": "0xa4c138df78859a58",
+    "type": "EndDevice",
+    "friendly_name": "kg_buero_regal",
+    "description": "KG Büro - Regal",
+    "definition": {
+      "description": "Temperature and humidity sensor",
+      "model": "TS0201",
+      "vendor": "Tuya"
+    },
+    "power_source": "Battery",
+    "supported": true
+  },
+  {
+    "ieee_address": "0xa4c138bcdad2d1d0",
+    "type": "Router",
+    "friendly_name": "whirlpool",
+    "description": "Whirlpool",
+    "definition": {
+      "description": "Smart plug",
+      "model": "TS011F",
+      "vendor": "Tuya"
+    },
+    "power_source": "Mains (single phase)",
+    "supported": true
+  },
+  {
+    "ieee_address": "0x00124b002226cccc",
+    "type": "Coordinator",
+    "friendly_name": "Coordinator",
+    "description": "Zigbee coordinator",
+    "definition": {
+      "description": "Coordinator"
+    },
+    "power_source": "Mains (single phase)",
+    "supported": true
+  }
+]

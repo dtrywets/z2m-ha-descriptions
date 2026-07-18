@@ -1,0 +1,40 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Z2M HA Descriptions",
+        "description": "Sync Zigbee2MQTT user descriptions to Home Assistant devices.",
+        "data": {
+          "base_topic": "MQTT base topic",
+          "sync_empty": "Sync empty descriptions"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Integration is already configured.",
+      "mqtt_not_loaded": "The MQTT integration must be set up before adding Z2M HA Descriptions."
+    },
+    "error": {}
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Z2M HA Descriptions options",
+        "data": {
+          "base_topic": "MQTT base topic",
+          "sync_empty": "Sync empty descriptions"
+        }
+      }
+    }
+  },
+  "services": {
+    "sync_now": {
+      "name": "Sync now",
+      "description": "Request a fresh bridge/devices payload and sync descriptions."
+    },
+    "clear": {
+      "name": "Clear descriptions",
+      "description": "Remove all description sensor entities created by this integration."
+    }
+  }
+}

@@ -1,0 +1,7 @@
+sync_now:
+  name: Sync now
+  description: Request a fresh bridge/devices payload and sync descriptions.
+
+clear:
+  name: Clear descriptions
+  description: Remove all description sensor entities created by this integration.
