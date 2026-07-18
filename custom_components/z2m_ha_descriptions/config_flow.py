@@ -63,15 +63,11 @@ class Z2mHaDescriptionsConfigFlow(ConfigFlow, domain=DOMAIN):
     @callback
     def async_get_options_flow(config_entry):  # noqa: ANN001
         """Return the options flow handler."""
-        return Z2mHaDescriptionsOptionsFlow(config_entry)
+        return Z2mHaDescriptionsOptionsFlow()
 
 
 class Z2mHaDescriptionsOptionsFlow(OptionsFlow):
     """Handle options for Z2M HA Descriptions."""
-
-    def __init__(self, config_entry) -> None:  # noqa: ANN001
-        """Initialize options flow."""
-        self.config_entry = config_entry
 
     async def async_step_init(
         self, user_input: dict[str, Any] | None = None

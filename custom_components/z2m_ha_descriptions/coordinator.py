@@ -13,7 +13,7 @@ from homeassistant.components.mqtt.models import ReceiveMessage
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import Event, HomeAssistant, callback
 from homeassistant.helpers import device_registry as dr
-from homeassistant.helpers.debounce import AsyncDebouncer
+from homeassistant.helpers.debounce import Debouncer
 from homeassistant.helpers.device_registry import EventDeviceRegistryUpdatedData
 from homeassistant.helpers.event import async_track_device_registry_updated_event
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
@@ -61,7 +61,7 @@ class Z2mDescriptionsCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         self.unmatched_count = 0
         self.last_sync: datetime | None = None
 
-        self._debouncer = AsyncDebouncer(
+        self._debouncer = Debouncer(
             hass,
             logger=_LOGGER,
             cooldown=DEBOUNCE_COOLDOWN,
