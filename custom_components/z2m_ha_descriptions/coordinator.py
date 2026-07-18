@@ -14,8 +14,10 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import Event, HomeAssistant, callback
 from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.debounce import Debouncer
-from homeassistant.helpers.device_registry import EventDeviceRegistryUpdatedData
-from homeassistant.helpers.event import async_track_device_registry_updated_event
+from homeassistant.helpers.device_registry import (
+    EVENT_DEVICE_REGISTRY_UPDATED,
+    EventDeviceRegistryUpdatedData,
+)
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import (
@@ -100,8 +102,9 @@ class Z2mDescriptionsCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             self._async_mqtt_message,
             qos=0,
         )
-        self._remove_device_listener = async_track_device_registry_updated_event(
-            self.hass, self._async_device_registry_updated
+        self._remove_device_listener = self.hass.bus.async_listen(
+            EVENT_DEVICE_REGISTRY_UPDATED,
+            self._async_device_registry_updated,
         )
 
     async def async_shutdown(self) -> None:
@@ -112,7 +115,7 @@ class Z2mDescriptionsCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         if self._remove_device_listener is not None:
             self._remove_device_listener()
             self._remove_device_listener = None
-        await self._debouncer.async_shutdown()
+        self._debouncer.async_shutdown()
 
     @callback
     def _async_mqtt_message(self, msg: ReceiveMessage) -> None:
