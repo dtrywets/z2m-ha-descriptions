@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from .coordinator import Z2mDescriptionsCoordinator
 
 
-class Z2mDescriptionSensor(CoordinatorEntity[Z2mDescriptionsCoordinator], SensorEntity):
+class Z2mDescriptionSensor(CoordinatorEntity, SensorEntity):
     """Diagnostic sensor with the Z2M top-level device description."""
 
     _attr_has_entity_name = True
