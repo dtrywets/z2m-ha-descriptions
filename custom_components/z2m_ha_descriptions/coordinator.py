@@ -6,7 +6,7 @@ import asyncio
 import logging
 from collections.abc import Callable
 from datetime import datetime
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from homeassistant.components import mqtt
 from homeassistant.components.mqtt.models import ReceiveMessage
@@ -30,8 +30,10 @@ from .const import (
     TOPIC_BRIDGE_DEVICES_SUFFIX,
     TOPIC_BRIDGE_REQUEST_DEVICES_SUFFIX,
 )
-from .entity import Z2mDescriptionSensor
 from .mapper import ieee_to_device_identifiers, map_bridge_devices_to_descriptions, parse_bridge_devices_payload
+
+if TYPE_CHECKING:
+    from .entity import Z2mDescriptionSensor
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -184,6 +186,8 @@ class Z2mDescriptionsCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
     async def _async_sync_description(self, ieee: str, description: str) -> bool:
         """Create or update a description entity for the given ieee."""
+        from .entity import Z2mDescriptionSensor
+
         device = self._async_find_ha_device(ieee)
         if device is None:
             return False

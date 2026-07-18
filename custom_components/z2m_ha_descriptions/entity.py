@@ -2,14 +2,18 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.const import EntityCategory
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import ENTITY_UNIQUE_ID_PREFIX
-from .coordinator import Z2mDescriptionsCoordinator
 from .mapper import ieee_to_device_identifiers
+
+if TYPE_CHECKING:
+    from .coordinator import Z2mDescriptionsCoordinator
 
 
 class Z2mDescriptionSensor(CoordinatorEntity[Z2mDescriptionsCoordinator], SensorEntity):
